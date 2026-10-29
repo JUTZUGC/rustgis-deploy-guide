@@ -1,0 +1,109 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "rustgis",
+    "nameCn": "RustGIS",
+    "repoName": "rustgis-deploy-guide",
+    "oneLiner": "纯 Rust 编写、GPU 绘制的桌面 GIS，Windows、macOS、Linux 与浏览器都能用",
+    "officialRepo": "https://github.com/opengeos/RustGIS",
+    "officialDocs": "https://github.com/opengeos/RustGIS#readme",
+    "stars": "2.1k",
+    "license": "Apache-2.0",
+    "highlights": [
+      "跨平台：Windows、macOS、Linux 同一套界面",
+      "免运行环境：一个安装包，不用装 Python / Java",
+      "GPU 绘制：大图层缩放拖动更顺",
+      "矢量 + 栅格：GeoTIFF、COG、XYZ、WMS、矢量瓦片",
+      "3D 地球与投影：Equal Earth、Robinson 或任意 EPSG",
+      "布局出图：图框、图例、比例尺、PDF 导出",
+      "插件与 ModelBuilder：把工具串成流程"
+    ],
+    "mcpSupport": "项目本身不含 MCP；本仓库的 MCP 只提供安装包选择、SHA256 校验与常见问题。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-10-29",
+    "verification": [
+      [
+        "README 确认三平台安装包、网页版与 GPU 绘制",
+        "已核对 2026-10-29"
+      ],
+      [
+        "Release v0.4.0 资产名、大小与 SHA256 已核对",
+        "已核对 2026-10-29"
+      ],
+      [
+        "未实测安装与打开（会下载 31–49 MB 安装包）",
+        "说明 2026-10-29"
+      ],
+      [
+        "MCP 冒烟：initialize / tools/list 返回 get_guide、search_guide、get_project_info",
+        "已验证 2026-10-29"
+      ],
+      [
+        "非目标宿主调用 get_guide 被拦截（HOST_NOT_ALLOWED）",
+        "已验证 2026-10-29"
+      ]
+    ],
+    "deploy": {
+      "type": "binary",
+      "steps": [
+        "curl -fL -o RustGIS-0.4.0-linux-x86_64.AppImage https://github.com/opengeos/RustGIS/releases/download/v0.4.0/RustGIS-0.4.0-linux-x86_64.AppImage",
+        "echo \"70e80502188c39849ed015811e87f5e438df9a63cb6a1b8e64512e672b3c82fc  RustGIS-0.4.0-linux-x86_64.AppImage\" | sha256sum -c -",
+        "chmod +x RustGIS-0.4.0-linux-x86_64.AppImage",
+        "echo \"校验通过：运行 ./RustGIS-0.4.0-linux-x86_64.AppImage\""
+      ],
+      "stepsPs": [
+        "curl.exe -fL -o RustGIS-0.4.0-windows-x86_64-setup.exe https://github.com/opengeos/RustGIS/releases/download/v0.4.0/RustGIS-0.4.0-windows-x86_64-setup.exe",
+        "$h=(Get-FileHash .\\RustGIS-0.4.0-windows-x86_64-setup.exe -Algorithm SHA256).Hash.ToLower()",
+        "if ($h -ne \"aef401a268a2894ba62f8854aa6cefb710e7f4a13f3d04805be40361cb089389\") { throw \"SHA256 校验失败\" }",
+        "Write-Host \"校验通过：双击安装包完成安装\""
+      ],
+      "source": "https://github.com/opengeos/RustGIS/releases/latest"
+    },
+    "pitfalls": [
+      "Windows 提示未知发布者：先核对 SHA256，再决定是否继续",
+      "macOS 打不开：到系统设置里允许来自已识别开发者的应用",
+      "Linux 缺依赖：deb 用 apt install ./文件名.deb 而不是 dpkg -i",
+      "界面卡顿：关闭超大图层或换本地显卡，远程桌面下更明显",
+      "底图不显示：检查网络与代理，底图是联网加载的",
+      "插件装不上：确认 RustGIS 版本与插件要求匹配"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/rustgis-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/rustgis-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "RustGIS",
+    "RustGIS 安装",
+    "开源 GIS",
+    "桌面 GIS",
+    "QGIS 替代",
+    "栅格 矢量 编辑",
+    "rustgis 教程",
+    "本地 GIS 软件",
+    "rustgis deploy guide",
+    "Rust GIS 下载"
+  ],
+  "topics": [
+    "gis",
+    "geospatial",
+    "rust",
+    "desktop",
+    "mapping",
+    "rustgis"
+  ]
+}

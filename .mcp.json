@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "rustgis-guide": {
+      "command": "node",
+      "args": [
+        "mcp-server.mjs"
+      ]
+    }
+  }
+}
